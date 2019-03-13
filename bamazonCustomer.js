@@ -58,10 +58,10 @@ function start() {
 					console.log("The item is currently in stock, placing your order...");
 
 					var bQuery = "UPDATE products SET stock_quantity = " + (itemData.stock_quantity - quant) + " WHERE item_id = " + item;
-
+					var total = quant * itemData.price;
 					connection.query(bQuery, function (err, res) {
 						if (err) throw err;
-						console.log(`Thank you for your purchase of ${quant}, ${itemData.product_name}.`);
+						console.log(`Thank you for your purchase of ${quant}, ${itemData.product_name} for a total of $${total}.`);
 						connection.end();
 					});
 
